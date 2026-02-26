@@ -58,10 +58,10 @@ export default function Catalog() {
           <button
             key={f.id}
             onClick={() => setFilter(f.id)}
-            className={`px-5 py-2 text-sm tracking-wide transition-colors duration-150 ${
+            className={`px-5 py-2 text-sm tracking-wide rounded-full transition-all duration-200 ${
               filter === f.id
-                ? "bg-zinc-900 text-white"
-                : "bg-zinc-50 text-zinc-600 hover:bg-zinc-100"
+                ? "bg-zinc-900 text-white shadow-sm"
+                : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200"
             }`}
           >
             {f.label}
@@ -69,8 +69,8 @@ export default function Catalog() {
         ))}
 
         {cart.length > 0 && (
-          <div className="ml-auto flex items-center gap-2 text-sm text-zinc-600">
-            <Icon name="ShoppingCart" size={16} />
+          <div className="ml-auto flex items-center gap-2 text-sm text-zinc-600 bg-zinc-50 px-4 py-2 rounded-full">
+            <Icon name="ShoppingCart" size={15} />
             <span className="font-medium">{cart.length}</span>
           </div>
         )}
@@ -81,18 +81,19 @@ export default function Catalog() {
         {filtered.map((card, i) => (
           <div
             key={card.id}
-            className="group border border-zinc-100 hover:border-zinc-300 transition-all duration-200 p-6 flex flex-col gap-6 opacity-0 animate-fade-in cursor-pointer"
+            className="group bg-white border border-zinc-100 hover:border-zinc-200 hover:shadow-xl transition-all duration-300 rounded-3xl p-6 flex flex-col gap-5 opacity-0 animate-fade-in cursor-pointer"
             style={{ animationDelay: `${0.25 + i * 0.07}s` }}
           >
             {/* Mini card visual */}
-            <div className="bg-zinc-900 rounded-sm p-5 aspect-[1.7/1] flex flex-col justify-between">
-              <Icon name="Apple" size={18} color="rgba(255,255,255,0.6)" />
+            <div className="bg-gradient-to-br from-zinc-700 to-zinc-950 rounded-2xl p-5 aspect-[1.7/1] flex flex-col justify-between shadow-md group-hover:shadow-lg transition-shadow duration-300">
+              <Icon name="Apple" size={18} color="rgba(255,255,255,0.55)" />
               <div>
-                <div className="text-white/40 text-[9px] tracking-[0.2em] uppercase mb-0.5">
+                <div className="text-white/35 text-[9px] tracking-[0.2em] uppercase mb-1.5">
                   Gift Card · {card.region}
                 </div>
-                <div className="text-white font-cormorant text-3xl font-semibold leading-none">
-                  {card.amount.toLocaleString()}{card.currency}
+                <div className="text-white font-cormorant text-3xl font-light leading-none tracking-tight">
+                  {card.amount.toLocaleString()}
+                  <span className="text-xl text-white/60 ml-1">{card.currency}</span>
                 </div>
               </div>
             </div>
@@ -101,26 +102,27 @@ export default function Catalog() {
             <div className="flex items-end justify-between">
               <div>
                 <div className="text-zinc-400 text-xs mb-1">{card.region}</div>
-                <div className="font-golos text-lg font-semibold text-zinc-900">
-                  {card.amount.toLocaleString()} {card.currency}
+                <div className="font-cormorant text-2xl font-light text-zinc-800 leading-none">
+                  {card.amount.toLocaleString()}
+                  <span className="text-lg text-zinc-400 ml-1">{card.currency}</span>
                 </div>
               </div>
               <button
                 onClick={() => addToCart(card)}
-                className={`flex items-center gap-2 px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                className={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-2xl transition-all duration-200 ${
                   added === card.id
-                    ? "bg-green-600 text-white"
-                    : "bg-zinc-900 text-white hover:bg-zinc-700"
+                    ? "bg-emerald-500 text-white shadow-sm"
+                    : "bg-zinc-900 text-white hover:bg-zinc-700 shadow-sm hover:shadow-md"
                 }`}
               >
                 {added === card.id ? (
                   <>
-                    <Icon name="Check" size={14} />
+                    <Icon name="Check" size={13} />
                     Добавлено
                   </>
                 ) : (
                   <>
-                    <Icon name="Plus" size={14} />
+                    <Icon name="Plus" size={13} />
                     Купить
                   </>
                 )}

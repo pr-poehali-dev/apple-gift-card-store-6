@@ -10,8 +10,7 @@ const FEATURED = [
     amount: 500,
     currency: "₽",
     region: "Россия",
-    color: "from-zinc-800 to-zinc-900",
-    accent: "#ffffff",
+    color: "from-zinc-700 to-zinc-900",
     popular: false,
   },
   {
@@ -19,8 +18,7 @@ const FEATURED = [
     amount: 1000,
     currency: "₽",
     region: "Россия",
-    color: "from-zinc-700 to-zinc-800",
-    accent: "#ffffff",
+    color: "from-zinc-600 to-zinc-800",
     popular: true,
   },
   {
@@ -28,8 +26,7 @@ const FEATURED = [
     amount: 2500,
     currency: "₽",
     region: "Россия",
-    color: "from-zinc-600 to-zinc-700",
-    accent: "#ffffff",
+    color: "from-zinc-500 to-zinc-700",
     popular: false,
   },
 ];
@@ -63,13 +60,13 @@ export default function Home({ onNavigate }: HomeProps) {
         >
           <button
             onClick={() => onNavigate("catalog")}
-            className="bg-zinc-900 text-white px-8 py-3.5 text-sm font-medium tracking-wide hover:bg-zinc-700 transition-colors duration-200"
+            className="bg-zinc-900 text-white px-8 py-3.5 text-sm font-medium tracking-wide rounded-2xl hover:bg-zinc-700 transition-all duration-200 shadow-sm"
           >
             Перейти в каталог
           </button>
           <button
             onClick={() => onNavigate("about")}
-            className="border border-zinc-200 text-zinc-700 px-8 py-3.5 text-sm font-medium tracking-wide hover:border-zinc-400 transition-colors duration-200"
+            className="border border-zinc-200 text-zinc-700 px-8 py-3.5 text-sm font-medium tracking-wide rounded-2xl hover:border-zinc-400 transition-all duration-200"
           >
             О магазине
           </button>
@@ -102,12 +99,12 @@ export default function Home({ onNavigate }: HomeProps) {
               style={{ animationDelay: `${0.7 + i * 0.12}s` }}
             >
               {card.popular && (
-                <div className="absolute -top-3 left-6 z-10 bg-zinc-900 text-white text-[10px] tracking-[0.15em] uppercase px-3 py-1">
+                <div className="absolute -top-3 left-6 z-10 bg-zinc-900 text-white text-[10px] tracking-[0.15em] uppercase px-3 py-1 rounded-full">
                   Хит продаж
                 </div>
               )}
               <div
-                className={`bg-gradient-to-br ${card.color} p-8 aspect-[1.6/1] flex flex-col justify-between cursor-pointer transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-xl`}
+                className={`bg-gradient-to-br ${card.color} p-8 aspect-[1.6/1] flex flex-col justify-between cursor-pointer transition-all duration-300 rounded-3xl group-hover:-translate-y-1.5 group-hover:shadow-2xl shadow-lg`}
                 onClick={() => onNavigate("catalog")}
               >
                 <div className="flex items-start justify-between">
@@ -117,11 +114,12 @@ export default function Home({ onNavigate }: HomeProps) {
                   </span>
                 </div>
                 <div>
-                  <div className="text-white/50 text-xs tracking-widest uppercase mb-1">
+                  <div className="text-white/40 text-xs tracking-widest uppercase mb-2">
                     Gift Card
                   </div>
-                  <div className="text-white font-cormorant text-4xl font-semibold">
-                    {card.amount.toLocaleString()}{card.currency}
+                  <div className="text-white font-cormorant text-4xl font-light tracking-tight">
+                    {card.amount.toLocaleString()}
+                    <span className="text-2xl text-white/70 ml-1">{card.currency}</span>
                   </div>
                 </div>
               </div>
@@ -143,7 +141,7 @@ export default function Home({ onNavigate }: HomeProps) {
               className="opacity-0 animate-fade-in"
               style={{ animationDelay: `${0.2 + i * 0.15}s` }}
             >
-              <div className="w-10 h-10 flex items-center justify-center bg-zinc-50 mb-5">
+              <div className="w-10 h-10 flex items-center justify-center bg-zinc-50 rounded-2xl mb-5">
                 <Icon name={b.icon} size={18} className="text-zinc-700" />
               </div>
               <h3 className="font-golos font-semibold text-zinc-900 mb-2">{b.title}</h3>
