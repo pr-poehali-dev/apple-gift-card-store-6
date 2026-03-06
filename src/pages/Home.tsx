@@ -46,7 +46,7 @@ export default function Home({ onNavigate }: HomeProps) {
           style={{ animationDelay: "0.2s" }}
         >
           Apple<br />
-          <em className="font-cormorant italic font-normal text-zinc-500">Gift Card</em>
+          <em className="font-cormorant italic font-normal text-zinc-500">Gift Cardss</em>
         </h1>
         <p
           className="text-zinc-500 text-lg max-w-md mb-12 leading-relaxed opacity-0 animate-fade-in"
